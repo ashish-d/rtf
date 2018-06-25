@@ -114,10 +114,10 @@ module RTF
         # This is from lfarcy / rtf-extensions
         # I don't see the point of coding different 128<n<256 range
 
-        #f1=lambda { |n| n < 128 ? n.chr : n < 256 ? "\\'#{n.to_s(16)}" : "\\u#{n}\\'3f" }
+        f=lambda { |n| n < 128 ? n.chr : n < 256 ? "\\'#{n.to_s(16)}" : "\\u#{n}\\'3f" }
         # Encode as Unicode.
 
-        f=lambda { |n| n < 128 ? n.chr : "\\u#{n}\\'3f" }
+        # f=lambda { |n| n < 128 ? n.chr : "\\u#{n}\\'3f" }
         # Ruby 1.9 is safe, cause detect original encoding
         # and convert text to utf-16 first
         if RUBY_VERSION>"1.9.0"
